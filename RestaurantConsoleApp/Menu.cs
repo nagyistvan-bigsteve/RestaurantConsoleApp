@@ -8,8 +8,8 @@ namespace RestaurantConsoleApp
 {
     class Menu : List<Product>
     {
-        public List<Product> menu = new List<Product>();
-        public string Name;
+        public List<Product> menu { get; set; } = new List<Product>();
+        public string Name { get; set; }
 
         public Menu(string name)
         {

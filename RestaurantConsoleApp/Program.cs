@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace RestaurantConsoleApp
 {
@@ -12,11 +13,19 @@ namespace RestaurantConsoleApp
             Product p2 = ProductFactory.CreateProduct("Cola", ProductType.Soda, 5);
             Product p3 = ProductFactory.CreateProduct("Limonade", ProductType.NaturalDrink, 5);
             Product p4 = ProductFactory.CreateProduct("Rice", ProductType.SlideDish, 5);
-            var menu = new Menu("Good");
+            Menu menu = new Menu("Good");
             menu.addProduct(p1).addProduct(p2).addProduct(p3).addProduct(p1);
             menu.setProduct(p1,p4);
-            Console.WriteLine(menu.ToString());
-//            var menu2 = new Menu((p1 as Meat),(p4 as SlideDish));
+            Cart cart = new Cart();
+            cart.addProduct(menu);
+            cart.addProduct(p2);
+            Console.WriteLine(cart);
+            cart.buy();
+            cart.addProduct(p4);
+            Console.WriteLine(cart);
+            cart.buy();
+            CashRegister.CashRegister.makeDailyBill();
+            CashRegister.CashRegister.makeDailyBill();
         }
     }
 }
