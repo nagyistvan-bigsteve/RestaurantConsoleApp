@@ -10,7 +10,7 @@ namespace RestaurantConsoleApp
     {
         public Sauce(ProductType type, string name, double price) : base(type, name, price)
         {
-
+            this.Description = "5 ml";
         }
         protected override void SetVAT()
         {

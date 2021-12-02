@@ -10,7 +10,7 @@ namespace RestaurantConsoleApp {
         private Status Status { get; set; } = Status.medium;
         public Meat(ProductType type, string name, double price) : base(type, name, price)
         {
-
+            this.Description = "With  slide dish (by default, with Rice - 5 ron). \nYou can change the slide dish, and the status (by default medium)";
         }
         public Meat setCoock(Status status)
         {
@@ -23,7 +23,7 @@ namespace RestaurantConsoleApp {
         }
         public override string ToString()
         {
-            return $"{Type} with name: {Name} -> price: {Price + Price * (VAT / 100)} \nDescription: {Description},{Status}";
+            return $"{Type} with name: {Name} -> price: {Price + Price * (VAT / 100)} \nDescription: {Description}";
         }
     }
 

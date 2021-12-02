@@ -10,7 +10,7 @@ namespace RestaurantConsoleApp
     {
         public Desert(ProductType type, string name, double price) : base(type, name, price)
         {
-
+            this.Description = "150 gr. ";
         }
         protected override void SetVAT()
         {

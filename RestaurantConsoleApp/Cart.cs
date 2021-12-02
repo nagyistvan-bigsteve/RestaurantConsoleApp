@@ -12,30 +12,49 @@ namespace RestaurantConsoleApp
 
         public Cart()
         {}
-        public Cart addProduct(List<Product> menu)
-        {
-            foreach(Product prod in (menu as Menu).menu)
-            {
-                cart.Add(prod);
-            }
-            return this;
-        }
+
         public Cart addProduct(Product product)
         {
-            cart.Add(product);
-            return this;
-        }
-        public Cart removeProduct(List<Product> menu)
-        {
-            foreach (Product prod in (menu as Menu).menu)
+            bool inStock = true;
+            if (product.GetType().Equals(typeof(NaturalDrink)))
             {
-                cart.Remove(prod);
+                inStock = Seller.checkStock(product.Name);
+            }
+            if (inStock)
+                cart.Add(product);
+            else
+                Console.WriteLine("We don't have on stock");
+            if (product.GetType().Equals(typeof(Meat))) 
+            {
+                cart.Add(ProductFactory.CreateProduct("Rice", ProductType.SlideDish, 5));
+                Console.WriteLine("With your Meat '"+product.Name+"' Menu, you get Rice. You can change it");
             }
             return this;
         }
+
+        public Cart changeSlideDish(Product slideDish)
+        {
+            bool changed = true;
+            foreach(Product slide in cart)
+            {
+                if(slide.Name == "Rice")
+                {
+                    changed = false;
+                    cart.Remove(slide);
+                    cart.Add(slideDish);
+                    Console.WriteLine("The slide dish is changed");
+                    break;
+                }
+            }
+            if (changed)
+                Console.WriteLine("The slide dish is not rice");
+            return this;
+        }
+
         public Cart removeProduct(Product product)
         {
-            cart.Remove(product);
+            if (cart.Contains(product))
+                cart.Remove(product);
             return this;
         }
         public void buy()
@@ -50,6 +69,7 @@ namespace RestaurantConsoleApp
             {
                 result += i.ToString() + "\n";
             }
+            if (!cart.Any()) result = "Your cart is empty";
             return result;
         }
 

@@ -10,7 +10,7 @@ namespace RestaurantConsoleApp
     {
         public SlideDish(ProductType type, string name, double price) : base(type, name, price)
         {
-
+            this.Description = "200 gr. ";
         }
         protected override void SetVAT()
         {

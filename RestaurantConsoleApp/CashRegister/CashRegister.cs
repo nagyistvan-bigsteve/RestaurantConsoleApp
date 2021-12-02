@@ -34,7 +34,31 @@ namespace RestaurantConsoleApp.CashRegister
         public static void dailyBill(double price, string prod)
         {
             Price += price;
-            Products += prod +"\n";
+
+            if (!Products.Contains(prod))
+             Products += prod +" - "+1+"x"+price+ "\n"; 
+            else
+            {
+                int index = Products.IndexOf(prod);
+
+                int position = Products.IndexOf("x");
+
+                var b ="";
+
+                var val = 1;
+
+                for(var i=index+prod.Length; i <= position; i++)
+                {
+                    if (Char.IsDigit(Products[i]))
+                        b += Products[i];
+                }
+                if (b.Length > 0)
+                    val = int.Parse(b);
+
+                var val2 = val + 1;
+
+                Products = Products.Replace(prod + " - "+val +"x", prod + " - "+val2 +"x");
+            }
 
         }
         public static void makeDailyBill()

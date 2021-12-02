@@ -12,7 +12,7 @@ namespace RestaurantConsoleApp
             public ProductType Type { get; }
             public double Price { get; set; }
             public string Description { get; set; } = "";
-            public double VAT { get; protected set; } = 9;
+            public double VAT { get; protected set; }
 
             protected Product(ProductType type, string name, double price)
             {
@@ -23,11 +23,17 @@ namespace RestaurantConsoleApp
             }
             public Product setDescription(string description)
             {
-                this.Description = description;
+                this.Description += description;
                 return this;
              }
 
-            protected abstract void SetVAT();
+            public Product changeDescription(string description)
+            {
+                this.Description = description;
+                return this;
+            }
+
+        protected abstract void SetVAT();
 
             public override string ToString()
             {
