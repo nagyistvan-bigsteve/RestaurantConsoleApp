@@ -23,10 +23,15 @@ namespace RestaurantConsoleApp
             if (inStock)
                 cart.Add(product);
             else
+            {
+                //StockNotify.Instance().OutProduct(product);
+                //StockNotify.Instance().Notify += product.OutOfStock();
                 Console.WriteLine("We don't have on stock");
+            }
+
             if (product.GetType().Equals(typeof(Meat))) 
             {
-                cart.Add(ProductFactory.CreateProduct("Rice", ProductType.SlideDish, 5));
+                cart.Add(ProductFactory.CreateProduct("Rice", ProductType.SlideDish, 5, new CashRegister.CashRegister()));
                 Console.WriteLine("With your Meat '"+product.Name+"' Menu, you get Rice. You can change it");
             }
             return this;
@@ -59,8 +64,10 @@ namespace RestaurantConsoleApp
         }
         public void buy()
         {
-            Seller.buyProducts(this);
+            foreach(Product prod in cart)
+            prod.BuyProduct();
             cart.Clear();
+            new CashRegister.CashRegister().makeBill();
         }
         public override string ToString()
         {

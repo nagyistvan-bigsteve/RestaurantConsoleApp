@@ -8,7 +8,7 @@ namespace RestaurantConsoleApp
 {
     class NaturalDrink : Product
     {   
-        public NaturalDrink(ProductType type, string name, double price) : base (type,name,price)
+        public NaturalDrink(ProductType type, string name, double price, CashRegister.CashRegister register) : base (type,name,price,register)
         {
             this.Description = "500 ml.";
         }

@@ -8,7 +8,7 @@ namespace RestaurantConsoleApp
 {
     class Desert : Product
     {
-        public Desert(ProductType type, string name, double price) : base(type, name, price)
+        public Desert(ProductType type, string name, double price, CashRegister.CashRegister register) : base(type, name, price,register)
         {
             this.Description = "150 gr. ";
         }

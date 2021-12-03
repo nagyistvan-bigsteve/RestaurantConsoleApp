@@ -8,7 +8,7 @@ namespace RestaurantConsoleApp {
     class Meat : Product
     {
         private Status Status { get; set; } = Status.medium;
-        public Meat(ProductType type, string name, double price) : base(type, name, price)
+        public Meat(ProductType type, string name, double price, CashRegister.CashRegister register) : base(type, name, price,register)
         {
             this.Description = "With  slide dish (by default, with Rice - 5 ron). \nYou can change the slide dish, and the status (by default medium)";
         }

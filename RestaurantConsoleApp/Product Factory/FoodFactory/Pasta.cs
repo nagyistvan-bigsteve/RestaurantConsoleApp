@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace RestaurantConsoleApp { 
     class Pasta : Product
     {
-        public Pasta(ProductType type, string name, double price) : base(type, name, price)
+        public Pasta(ProductType type, string name, double price, CashRegister.CashRegister register) : base(type, name, price, register)
         {
             this.Description = "300 gr.";
         }

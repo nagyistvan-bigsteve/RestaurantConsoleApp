@@ -13,14 +13,14 @@ namespace RestaurantConsoleApp.CashRegister
         public static double Total = 0;
         public static string Bill ="";
 
-        public static void bill(double price, double vat, string name)
+        public void bill(double price, double vat, string name)
         {
             Total += (price + price * (vat / 100));
             Bill += name + "---> price:" + price + " vat:" + vat + "% \n" +
                 "total: "+ (price + price * (vat / 100))+"\n";
             dailyBill(price + (price * (vat / 100)), name);
         }
-        public static void makeBill()
+        public void makeBill()
         {   
             Console.WriteLine("---------------");
             Console.WriteLine("Restaurant bill");
@@ -31,7 +31,7 @@ namespace RestaurantConsoleApp.CashRegister
             Total = 0;
             Bill = "";
         }
-        public static void dailyBill(double price, string prod)
+        public void dailyBill(double price, string prod)
         {
             Price += price;
 
@@ -61,7 +61,7 @@ namespace RestaurantConsoleApp.CashRegister
             }
 
         }
-        public static void makeDailyBill()
+        public void makeDailyBill()
         {
             Console.WriteLine("---------------");
             Console.WriteLine("Restaurant daily bill");

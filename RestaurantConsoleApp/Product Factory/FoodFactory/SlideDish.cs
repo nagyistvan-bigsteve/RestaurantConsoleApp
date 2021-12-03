@@ -8,7 +8,7 @@ namespace RestaurantConsoleApp
 {
     class SlideDish : Product
     {
-        public SlideDish(ProductType type, string name, double price) : base(type, name, price)
+        public SlideDish(ProductType type, string name, double price, CashRegister.CashRegister register) : base(type, name, price, register)
         {
             this.Description = "200 gr. ";
         }

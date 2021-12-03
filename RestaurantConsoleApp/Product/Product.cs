@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantConsoleApp
 {
-    public abstract class Product
+    public abstract class Product : Seller
     {
             public string Name { get; set; }
             public ProductType Type { get; }
@@ -14,7 +14,7 @@ namespace RestaurantConsoleApp
             public string Description { get; set; } = "";
             public double VAT { get; protected set; }
 
-            protected Product(ProductType type, string name, double price)
+            protected Product(ProductType type, string name, double price, CashRegister.CashRegister register) : base(register)
             {
                 Name = name;
                 Type = type;
@@ -39,5 +39,14 @@ namespace RestaurantConsoleApp
             {
                 return $"{Type} with name: {Name} -> price: {Price} \r Description: {Description}";
             }
+        public override void BuyProduct()
+        {
+            this.register.bill(Price, VAT, Name);
+        }
+
+        public void OutOfStock(object source)
+        {
+            Console.WriteLine(Name + " is out of the stock");
+        }
     }
 }

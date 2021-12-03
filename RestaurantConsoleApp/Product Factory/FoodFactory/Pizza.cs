@@ -8,7 +8,7 @@ namespace RestaurantConsoleApp
 {
     class Pizza : Product
     {   
-        public Pizza(ProductType type, string name, double price) : base(type, name, price)
+        public Pizza(ProductType type, string name, double price, CashRegister.CashRegister register) : base(type, name, price, register)
         {
             this.Description = "400 gr. ,Sos, Salam";
         }
